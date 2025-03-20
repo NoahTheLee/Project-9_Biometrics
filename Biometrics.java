@@ -41,10 +41,25 @@ public class Biometrics {
                     break;
                 case 2: // Print all users in the list
                     System.out.println("Print All Users");
+                    // Check if the user list is empty
+                    if (USER_CREDENTIALS.isEmpty()) {
+                        System.out.println("No users found. Please create a user first.");
+                        break;
+                    }
                     USER_CREDENTIALS.values().forEach(System.out::println);
                     break;
                 case 3: // Sign in with an already added user
                     System.out.println("Sign-In");
+                    // Check if a user is signed in
+                    if (currentCredential != null) {
+                        System.out.println("You are already signed in as " + currentCredential.getUsername());
+                        break;
+                    }
+                    // Check if the user list is empty
+                    if (USER_CREDENTIALS.isEmpty()) {
+                        System.out.println("No users found. Please create a user first.");
+                        break;
+                    }
                     currentCredential = getCredential();
                     System.out.println("Now signed in as " + currentCredential.getUsername());
                     break;
